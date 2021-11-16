@@ -1,10 +1,3 @@
-#KeyVault Resource Group and KeyVaultName
-variable "keyvault_rg" {
-  type = string
-}
-variable "keyvault_name" {
-  type = string
-}
 
 variable "azure_region" {
   description = "Azure Region where to deploy resources. Caution the region must support Availability Zone"
@@ -161,3 +154,11 @@ variable "defaultpool-securitypolicy" {
   default = false
 }
 
+
+#KeyVault Resource Group and KeyVaultName
+# variable "keyvault_rg" {
+#   type = string
+# }
+# variable "keyvault_name" {
+#   type = string
+# }
