@@ -13,6 +13,4 @@ LogsWorkspaceName      = ""
 enable-privatecluster  = false
 enable-AzurePolicy     = false
 networkpolicy_plugin   = "azure"
-a-record-dns-ingress   = ""
-dns-zone-name-for-ingress = ""
-rg-azuredns = ""
+"
