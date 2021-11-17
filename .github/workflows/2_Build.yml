@@ -12,16 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    # Step 1
     # Checkout du repo.
-    - name: Récupération du repo.
-      uses: actions/checkout@main
+    # https://github.com/marketplace/actions/checkout
 
+
+    # Step 2
     # Connexion à Azure
-    - name: Login to Azure
-      uses: Azure/login@v1
-      with:        
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    # https://github.com/marketplace/actions/azure-login
 
+    # Step 3
     # Récupération des credentials Azure Container Registry (Pas les bonnes pratriques)    
     - name: Get Key ACR
       run: |
@@ -29,16 +29,15 @@ jobs:
         echo "::set-output name=content::$key"
       id: var_acrkey
 
-    # Connexion Azure Container Registry  
-    - name: Connexion à Azure Container Registry 
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ env.ACR_NAME }} 
-        password: "${{ steps.var_acrkey.outputs.content }}"
+    # Step 4
+    # Connexion Azure Container Registry
+    # https://github.com/marketplace/actions/azure-container-registry-login
+    # Pour le password mettre  "${{ steps.var_acrkey.outputs.content }}" 
 
+    # Step 5
     # Build (runner) & Push (Azure Container Registry)
-    - name: Build & Push
-      run: |
-        cd Src && docker build . -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+    # https://docs.microsoft.com/fr-fr/azure/aks/kubernetes-action
+    #- name: Build & Push
+    #  run: |
+    #    cd Src && docker build .   ................
+    #    docker push ..................
