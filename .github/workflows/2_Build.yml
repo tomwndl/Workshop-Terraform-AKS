@@ -20,7 +20,7 @@ jobs:
       with:        
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-     - name: Get Key ACR
+    - name: Get Key ACR
       run: |
         key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
         echo "::set-output name=content::$key"
