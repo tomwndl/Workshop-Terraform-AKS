@@ -18,6 +18,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
       - run: |
-          az group list --query "[?location==${{ env.LOCATION }}]"
+          az group list --query "[?location=='${{ env.LOCATION }}']"
     
     
