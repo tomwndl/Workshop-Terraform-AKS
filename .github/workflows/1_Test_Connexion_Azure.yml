@@ -1,4 +1,4 @@
-name: Test Connexion Azure
+name: 1-Test Connexion Azure
 
 on:
   workflow_dispatch
