@@ -32,3 +32,8 @@ jobs:
         login-server: ${{ env.ACR_NAME }}.azurecr.io
         username: ${{ env.ACR_NAME }} 
         password: "${{ steps.var_acrkey.outputs.content }}"
+
+    - name: Build & Push
+      run: |
+        cd Src && docker build . -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
