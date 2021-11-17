@@ -1,1 +1,23 @@
+name: Test Connexion Azure
 
+on:
+  workflow_dispatch:
+  
+env:
+  LOCATION: westeurope
+
+jobs:
+  
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Connexion Azure
+        uses: azure/login@v1
+        with: 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - run: |
+          az group list --query "[?location==${{ env.LOCATION }}]"
+    
+    
