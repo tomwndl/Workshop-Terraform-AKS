@@ -8,6 +8,7 @@ env:
   CLUSTER_NAME: "AKS-00001"
   ACR_NAME: "acraks00001"
   IMAGE_NAME: "azure-vote-front"
+  VERSION: "b687b747bb76116ea646c4b9ed501ec84569444a"
   NAMESPACES: "democatdog"
 
 jobs:
@@ -51,5 +52,5 @@ jobs:
         manifests: |
           ./Src/azure-vote-all-in-one-redis.yaml          
         images: |
-          ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
         namespace: ${{ env.NAMESPACES }}
