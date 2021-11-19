@@ -1,4 +1,4 @@
-name: 4-Test - Buil-Deploy # Nom du Workflow
+name: 4-Test - Build-Deploy # Nom du Workflow
 on:
   workflow_dispatch # Déclenchement manuel
 
