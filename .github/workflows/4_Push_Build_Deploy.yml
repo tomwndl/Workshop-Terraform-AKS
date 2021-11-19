@@ -1,4 +1,4 @@
-name: 4-Test - Push-Build-Deploy # Nom du Workflow
+name: 4-Test - Push-Build-Deploy # Nom du Workflow 
 on:
   push:
     paths:
