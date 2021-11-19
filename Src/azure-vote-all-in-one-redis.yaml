@@ -2,7 +2,7 @@
  apiVersion: v1
  kind: Namespace
  metadata:
-   name: democatdog00
+   name: democatdog01
 ---
 apiVersion: apps/v1
 kind: Deployment
