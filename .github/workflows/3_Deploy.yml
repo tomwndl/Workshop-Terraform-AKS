@@ -52,5 +52,5 @@ jobs:
         manifests: |
           ./Src/azure-vote-all-in-one-redis.yaml          
         images: |
-          ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}
         namespace: ${{ env.NAMESPACES }}
