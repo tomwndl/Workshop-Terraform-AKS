@@ -9,7 +9,7 @@ env:
   CLUSTER_NAME: "AKS-00001"
   ACR_NAME: "acraks00001"
   IMAGE_NAME: "azure-vote-front"
-  NAMESPACES: "democatdog01" # modifier le fichier manifest en "democatdog01"
+  NAMESPACES: "democatdog01" # modifier le fichier manifest en "democatdog01" & ajouter <h1>democatdog01</h1> /Src/azure-vote/templates/index.html
 
 
 jobs:
