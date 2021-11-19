@@ -8,6 +8,7 @@ env:
   CLUSTER_NAME: "AKS-00001"
   ACR_NAME: "acraks00001"
   IMAGE_NAME: "azure-vote-front"
+  VERSION: "69b43d9b16f160a8084b2c509c26bf6543a27e48"
   NAMESPACES: "democatdog00"
 
 jobs:
