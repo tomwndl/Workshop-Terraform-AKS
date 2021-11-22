@@ -16,8 +16,8 @@ jobs:
     steps:
 
     # Step 1
-    - name: Récupération du repo.
-      uses:  #Vérifie le dépôt sous $GITHUB_WORKSPACE, afin que les jobs puisse y accéder
+    #- name: Récupération du repo.
+    #  uses:  #Vérifie le dépôt sous $GITHUB_WORKSPACE, afin que les jobs puisse y accéder
 
     # Step 2
     # Action "Login Azure" # Marketplace 'GitHubAction' https://github.com/marketplace/actions/azure-login
@@ -25,11 +25,11 @@ jobs:
 
     # Step 3
     # Récupération des clés de l'Azure Container Registry
-    - name: Get Key ACR
-      run: |
-        key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
-        echo "::set-output name=content::$key"
-      id: var_acrkey        
+    #- name: Get Key ACR
+    #  run: |
+    #    key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
+    #    echo "::set-output name=content::$key"
+    #  id: var_acrkey        
 
 
     # Step 4
