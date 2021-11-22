@@ -1,23 +1,28 @@
+# Nom du Worflow
 name: 1-Test Connexion Azure
 
+# Déclenchement
 on:
   workflow_dispatch
-  
+
+
+# Variable d'environnement
 env:
-  LOCATION: westeurope # Variable
+  LOCATION: westeurope
 
 jobs:
   
   build:
+    # Runner
     runs-on: ubuntu-latest
     
     steps:
-      - name: Connexion Azure
-        uses: azure/login@v1
+      - name: Connexion Azure # Nom du 'Step'
+        uses: azure/login@v1 # Marketplace 'GitHubAction' https://github.com/marketplace/actions/azure-login
         with: 
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }} # 'Service Secrets Github' Service Principal Azure 
           
       - run: |
-          az group list --query "[?location=='${{ env.LOCATION }}']" --output tsv
-    
+          az group list --query "[?location=='${{ env.LOCATION }}']" --output tsv  
+    # Simple command AZ CLI
     
