@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    - run: |
+        echo Workflow "Build.yml"
+
     # Step 1
     #- name: Récupération du repo.
     #  uses:  #Vérifie le dépôt sous $GITHUB_WORKSPACE, afin que les jobs puisse y accéder
