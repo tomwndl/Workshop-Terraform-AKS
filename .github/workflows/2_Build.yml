@@ -1,6 +1,9 @@
-name: 2-Test - Build # Nom du Workflow
+# Nom du Workflow
+name: 2-Test - Build 
+
+# Déclenchement manuel
 on:
-  workflow_dispatch # Déclenchement manuel
+  workflow_dispatch 
 
 env:
   RG_NAME: "RG-AKS-0007"  # Nom du "resource group"
@@ -12,28 +15,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+    # Step 1
     - name: Récupération du repo.
-      uses: actions/checkout@main
+      uses:  #Vérifie le dépôt sous $GITHUB_WORKSPACE, afin que les jobs puisse y accéder
 
-    - name: Login to Azure
-      uses: Azure/login@v1
-      with:        
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    # Step 2
+    # Action "Login Azure" # Marketplace 'GitHubAction' https://github.com/marketplace/actions/azure-login
 
+
+    # Step 3
+    # Récupération des clés de l'Azure Container Registry
     - name: Get Key ACR
       run: |
         key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
         echo "::set-output name=content::$key"
       id: var_acrkey        
 
-    - name: Connexion à Azure Container Registry 
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ env.ACR_NAME }} 
-        password: "${{ steps.var_acrkey.outputs.content }}"
 
-    - name: Build & Push
-      run: |
-        cd Src && docker build . -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+    # Step 4
+    # Connexion à Azure Container Registry "https://github.com/marketplace/actions/azure-container-registry-login"
+    # Pour le password, mettre "${{ steps.var_acrkey.outputs.content }}" 
+
+
+    # Step 5 Build & Push
+    # Pour la version de l'image mettre ${{ github.sha }}
+    #- name: Build & Push
+    #  run: |
+    #    cd Src && docker build . -t ........
+    #    docker push .......
