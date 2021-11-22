@@ -1,15 +1,14 @@
 name: 4-Test - Push-Build-Deploy # Nom du Workflow 
 on:
-  push:
-    paths:
-      - 'Src/**'
+  workflow_dispatch # Déclenchement manuel
+  #Exercice . Faire un déclenchement du Workflow sur un push lors d'une modification dans le repertoire /Src
 
 env:
   RG_NAME: "RG-AKS-0007"
   CLUSTER_NAME: "AKS-00001"
   ACR_NAME: "acraks00001"
   IMAGE_NAME: "azure-vote-front"
-  NAMESPACES: "democatdog01" # modifier le fichier manifest en "democatdog01" & ajouter <h1>democatdog01</h1> /Src/azure-vote/templates/index.html
+  NAMESPACES: "democatdog01" # modifier le fichier manifest en "democatdog01" /Src/azure-vote-all-in-one-redis.yaml & ajouter <h1>democatdog01</h1> /Src/azure-vote/templates/index.html
 
 
 jobs:
@@ -17,31 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Récupération du repo.
-      uses: actions/checkout@main
-
-    - name: Login to Azure
-      uses: Azure/login@v1
-      with:        
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Get Key ACR
-      run: |
-        key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
-        echo "::set-output name=content::$key"
-      id: var_acrkey        
-
-    - name: Connexion à Azure Container Registry 
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ env.ACR_NAME }} 
-        password: "${{ steps.var_acrkey.outputs.content }}"
-
-    - name: Build & Push
-      run: |
-        cd Src && docker build . -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+    - run: |
+        echo Workflow "Build_Deploy.yml"
 
 
   Deploy:
@@ -49,40 +25,5 @@ jobs:
     needs: Build
     steps:
 
-    - name: Récupération du repo.
-      uses: actions/checkout@main
-
-    - name: Login to Azure
-      uses: Azure/login@v1
-      with:        
-        creds: ${{ secrets.AZURE_CREDENTIALS }}    
-
-    - name: Get Key ACR
-      run: |
-        key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
-        echo "::set-output name=content::$key"
-      id: var_acrkey        
-
-    - name: Connexion à Azure Container Registry 
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ env.ACR_NAME }} 
-        password: "${{ steps.var_acrkey.outputs.content }}"          
-    
-    - name: AKS set context
-      uses: azure/aks-set-context@v1
-      with:
-        creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        resource-group: ${{ env.RG_NAME }}
-        cluster-name: ${{ env.CLUSTER_NAME }}
-      id: login
-
-    - name: Deploiement
-      uses: azure/k8s-deploy@v1
-      with:
-        manifests: |
-          ./Src/azure-vote-all-in-one-redis.yaml          
-        images: |
-          ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        namespace: ${{ env.NAMESPACES }}  
+    - run: |
+        echo Workflow "Build_Deploy.yml"
