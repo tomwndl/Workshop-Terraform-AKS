@@ -15,31 +15,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Récupération du repo.
-      uses: actions/checkout@main
+    - run: |
+        echo Workflow "Build_Deploy.yml"
 
-    - name: Login to Azure
-      uses: Azure/login@v1
-      with:        
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    # Step 1
+    #- name: Récupération du repo.
+    #  uses:  #Vérifie le dépôt sous $GITHUB_WORKSPACE, afin que les jobs puisse y accéder
 
-    - name: Get Key ACR
-      run: |
-        key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
-        echo "::set-output name=content::$key"
-      id: var_acrkey        
+    # Step 2
+    # Action "Login Azure" # Marketplace 'GitHubAction' https://github.com/marketplace/actions/azure-login
 
-    - name: Connexion à Azure Container Registry 
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ env.ACR_NAME }} 
-        password: "${{ steps.var_acrkey.outputs.content }}"
 
-    - name: Build & Push
-      run: |
-        cd Src && docker build . -t ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        docker push ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+    # Step 3
+    # Récupération des clés de l'Azure Container Registry
+    #- name: Get Key ACR
+    #  run: |
+    #    key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
+    #    echo "::set-output name=content::$key"
+    #  id: var_acrkey        
+
+
+    # Step 4
+    # Connexion à Azure Container Registry "https://github.com/marketplace/actions/azure-container-registry-login"
+    # Pour le password, mettre "${{ steps.var_acrkey.outputs.content }}" 
+
+
+    # Step 5 Build & Push
+    # Pour la version de l'image mettre ${{ github.sha }}
+    #- name: Build & Push
+    #  run: |
+    #    cd Src && docker build . -t ........
+    #    docker push .......
 
 
   Deploy:
@@ -47,40 +53,25 @@ jobs:
     needs: Build
     steps:
 
-    - name: Récupération du repo.
-      uses: actions/checkout@main
+    - run: |
+        echo Workflow "Build_Deploy.yml"    
 
-    - name: Login to Azure
-      uses: Azure/login@v1
-      with:        
-        creds: ${{ secrets.AZURE_CREDENTIALS }}    
+    # Step 1
+    #- name: Récupération du repo.
+    #  uses:  #Vérifie le dépôt sous $GITHUB_WORKSPACE, afin que les jobs puisse y accéder
 
-    - name: Get Key ACR
-      run: |
-        key=`az acr credential show --resource-group ${{ env.RG_NAME }} --name ${{ env.ACR_NAME}} --query passwords[0].value --output tsv`
-        echo "::set-output name=content::$key"
-      id: var_acrkey        
+    # Step 2
+    # Action "Login Azure" # Marketplace 'GitHubAction' https://github.com/marketplace/actions/azure-login
 
-    - name: Connexion à Azure Container Registry 
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ env.ACR_NAME }}.azurecr.io
-        username: ${{ env.ACR_NAME }} 
-        password: "${{ steps.var_acrkey.outputs.content }}"          
+    # Step 3
+    # Récupération des clés de l'Azure Container Registry
+
+    # Step 4
+    # Connexion à Azure Container Registry "https://github.com/marketplace/actions/azure-container-registry-login"
+
+    # Step 5
+    # Context https://github.com/marketplace/actions/azure-kubernetes-set-context
     
-    - name: AKS set context
-      uses: azure/aks-set-context@v1
-      with:
-        creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        resource-group: ${{ env.RG_NAME }}
-        cluster-name: ${{ env.CLUSTER_NAME }}
-      id: login
-
-    - name: Deploiement
-      uses: azure/k8s-deploy@v1
-      with:
-        manifests: |
-          ./Src/azure-vote-all-in-one-redis.yaml          
-        images: |
-          ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-        namespace: ${{ env.NAMESPACES }}  
+    # Step 6
+    # Deploiement de l'application
+    #https://github.com/marketplace/actions/deploy-to-kubernetes-cluster
