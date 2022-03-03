@@ -8,8 +8,4 @@ La plateforme déployée sera constituée :
 - d'un compte de Stockage Azure
 - le tout dans un resource group Azure
 
-Exercice 1 : Codage et déploiement de ressources simples (resource group, compte de stockage)
-
-Exercice 2 : Codage et déploiement d'une Azure Container Registry
-
-Exercice 3 :  Déploiement d'un cluster AKS et explication du code associé
+L'application sera ..... à compléter .....
