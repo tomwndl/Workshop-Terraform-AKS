@@ -20,17 +20,16 @@ variable "aks_vnet_name" {
 }
 
 
-
 # AKS Cluster name
 variable "cluster_name" {
   type    = string
-  default = "AKS-Stan1"
+  default = "AKS-000"
 }
 
 #AKS DNS name
 variable "dns_name" {
   type    = string
-  default = "aksstan1"
+  default = "aks0000"
 }
 
 # sku of Azure managed K8S control plane
@@ -75,7 +74,7 @@ variable "admin_username" {
 variable "kubernetes_version" {
   description = "Version of Kubernetes to deploy"
   type        = string
-  default     = "1.20.9"
+  default     = "1.22.6"
 }
 
 

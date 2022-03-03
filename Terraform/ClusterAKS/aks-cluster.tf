@@ -14,8 +14,8 @@
 
 resource "azurerm_kubernetes_cluster" "Terra_aks" {
   name                       = var.cluster_name
-  location                   = azurerm_resource_group.Terra_aks_rg.location
-  resource_group_name        = azurerm_resource_group.Terra_aks_rg.name
+  location                   = var.azure_region
+  resource_group_name        = var.resource_group
   dns_prefix                 = var.dns_name
   kubernetes_version         = var.kubernetes_version
   sku_tier                   = var.sku-controlplane
@@ -51,7 +51,7 @@ resource "azurerm_kubernetes_cluster" "Terra_aks" {
     load_balancer_sku  = "Standard"    # sku can be basic or standard. Here it an AKS cluster with AZ support so Standard SKU is mandatory
   }
 
-  addon_profile {
+  # addon_profile {
     # oms_agent {
     #   enabled = true
     #   log_analytics_workspace_id = azurerm_log_analytics_workspace.Terra-LogsWorkspace.id
@@ -83,9 +83,7 @@ resource "azurerm_kubernetes_cluster" "Terra_aks" {
     #   # subnet_cidr = "10.252.0.0/16"
     #   subnet_id = azurerm_subnet.Terra_aks_appgw_subnet.id
     # }
-
-
-  }
+  # }
 
   # Enable Kubernetes RBAC 
   role_based_access_control {
