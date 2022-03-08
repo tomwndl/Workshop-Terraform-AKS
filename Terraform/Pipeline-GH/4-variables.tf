@@ -9,11 +9,6 @@ variable "azureRegion" {
 #  Resource Group Name
 variable "resourceGroupName" {
   type    = string
-  default = "RG-AKSCluster"
+  default = "RG-DemoGitHub"
 }
 
-#  Azure Container Registry name
-variable "acrName" {
-  type    = string
-  default = "acrlesbarbus00"
-}

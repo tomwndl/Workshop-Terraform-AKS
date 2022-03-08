@@ -10,8 +10,8 @@
 
 resource "azurerm_virtual_network" "Terra_aks_vnet" {
   name                = var.aks_vnet_name
-  resource_group_name = azurerm_resource_group.Terra_aks_rg.name
-  location            = azurerm_resource_group.Terra_aks_rg.location
+  location                   = var.azure_region
+  resource_group_name        = var.resource_group
   address_space       = ["10.0.0.0/8"]
 }
 
@@ -28,7 +28,7 @@ resource "azurerm_role_assignment" "Terra-aks-vnet-role" {
 
 resource "azurerm_subnet" "Terra_aks_subnet" {
   name                 = "aks_subnet"
-  resource_group_name  = azurerm_resource_group.Terra_aks_rg.name
+  resource_group_name        = var.resource_group
   virtual_network_name = azurerm_virtual_network.Terra_aks_vnet.name
   address_prefixes     = ["10.240.0.0/16"]
 }
