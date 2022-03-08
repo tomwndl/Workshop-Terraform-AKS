@@ -78,6 +78,11 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    # Se postionner dans le répertoire où est le code terraform
+    - name: change directory
+      run: |
+        cd ./Terraform/Pipeline-GH
+
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
