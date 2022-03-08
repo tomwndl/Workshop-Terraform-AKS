@@ -39,10 +39,14 @@ jobs:
     - name: change directory
       run: |
         cd ./Terraform/Pipeline-GH
+        ls -lisa
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: |
+        ls -lisa
+        pwd
+        terraform init
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
