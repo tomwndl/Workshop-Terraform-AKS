@@ -6,3 +6,5 @@ Ceci est le repertoire avec le code Terraform pour les exercices d'Infrastructur
 - Exercice 2 : Codage et déploiement d'une Azure Container Registry avec stockage du TFState dans un Backend Azure Storage
 - Exercice 3 :  Déploiement d'un cluster AKS et explication du code associé
 
+---
+
