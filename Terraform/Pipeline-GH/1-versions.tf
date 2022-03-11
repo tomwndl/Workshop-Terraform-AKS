@@ -16,11 +16,9 @@ terraform {
     container_name       = "tfstate"
     key                  = "pipeline-gh.terraform.tfstate" 
     # pour les options d'authentification au backend Azure Storage cf. https://www.terraform.io/language/settings/backends/azurerm
-    subscription_id = var.AzureSubscriptionID
-    client_id       = var.AzureClientID
-    client_secret   = var.AzureClientSecret
-    tenant_id       = var.AzureTenandID
+    sas_token = "sp=racw&st=2022-03-11T13:56:12Z&se=2022-03-11T21:56:12Z&spr=https&sv=2020-08-04&sr=c&sig=LZMkCbAs%2BWzptxC%2FZWXmJjbk3vccw4OSFRmMyiYAkes%3D"
   }
+  
   required_providers {
     azurerm = {
       # The "hashicorp" namespace is the new home for the HashiCorp-maintained
