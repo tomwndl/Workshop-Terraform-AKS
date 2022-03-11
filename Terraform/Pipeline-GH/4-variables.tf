@@ -30,9 +30,6 @@ variable "AzureTenandID" {
   type = string
 }
 
-variable "BackendStorageSASToken" {
-  type = string
-}
 
 
 
