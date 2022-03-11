@@ -15,6 +15,11 @@ terraform {
     storage_account_name = "backendterrastan"      # mettre le nom du compte de stockage créer dans le lab 1
     container_name       = "tfstate"
     key                  = "pipeline-gh.terraform.tfstate" 
+    # pour les options d'authentification au backend Azure Storage cf. https://www.terraform.io/language/settings/backends/azurerm
+    subscription_id = var.AzureSubscriptionID
+    client_id       = var.AzureClientID
+    client_secret   = var.AzureClientSecret
+    tenant_id       = var.AzureTenandID
   }
   required_providers {
     azurerm = {
