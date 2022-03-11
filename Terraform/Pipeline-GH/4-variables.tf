@@ -12,3 +12,24 @@ variable "resourceGroupName" {
   default = "RG-DemoGitHub"
 }
 
+
+# Variables pour l'authentification du provider Terraform  
+variable "AzureSubscriptionID" {
+  type = string
+}
+
+variable "AzureClientSecret" {
+  type = string
+}
+
+variable "AzureClientID" {
+  type = string
+}
+
+variable "AzureTenandID" {
+  type = string
+}
+
+
+
+

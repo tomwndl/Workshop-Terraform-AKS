@@ -15,7 +15,11 @@ terraform {
     storage_account_name = "backendterrastan"      # mettre le nom du compte de stockage créer dans le lab 1
     container_name       = "tfstate"
     key                  = "pipeline-gh.terraform.tfstate" 
+    # pour les options d'authentification au backend Azure Storage cf. https://www.terraform.io/language/settings/backends/azurerm
+    # sas_token = "sp=racwdli&st=2022-03-11T14:00:16Z&se=2022-03-11T22:26:16Z&spr=https&sv=2020-08-04&sr=c&sig=iiu05uUa%2Bh9tdqO%2F%2FwJEGZlkeJR5Ufgna1rshTaVv7s%3D"
+        
   }
+  
   required_providers {
     azurerm = {
       # The "hashicorp" namespace is the new home for the HashiCorp-maintained
@@ -39,4 +43,8 @@ terraform {
 provider "azurerm" {
   # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
   features {}
+  subscription_id = var.AzureSubscriptionID
+  client_id       = var.AzureClientID
+  client_secret   = var.AzureClientSecret
+  tenant_id       = var.AzureTenandID
 }
