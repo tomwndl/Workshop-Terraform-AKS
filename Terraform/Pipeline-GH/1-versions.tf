@@ -17,7 +17,6 @@ terraform {
     key                  = "pipeline-gh.terraform.tfstate" 
     # pour les options d'authentification au backend Azure Storage cf. https://www.terraform.io/language/settings/backends/azurerm
     sas_token = "sp=racwdli&st=2022-03-11T14:00:16Z&se=2022-03-11T22:26:16Z&spr=https&sv=2020-08-04&sr=c&sig=iiu05uUa%2Bh9tdqO%2F%2FwJEGZlkeJR5Ufgna1rshTaVv7s%3D"
-    # access_key = "NEJE7tUTQA5Bnq2iXBaZ+mH50G1tL5Ygh4I/GcO3Q/MHJ9tZ7XpcXiHWwDMhGd2CWMoFMxu+eIbj5yvhbPTr0A=="
   }
   
   required_providers {
