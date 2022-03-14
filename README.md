@@ -8,6 +8,4 @@ La plateforme déployée sera constituée :
 - d'un compte de Stockage Azure
 - le tout dans un resource group Azure
 
-le premier workflow sera pour déployer un code terraform
-
-L'application sera ..... à compléter avec Tug .....
+Le workflow GitHub (Lab 4) sera utiliser pour déployer un code terraform (et créer un Resource Group)
