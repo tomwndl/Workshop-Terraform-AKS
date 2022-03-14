@@ -2,9 +2,26 @@
 
 Ceci est le repertoire avec le code Terraform pour les exercices d'Infrastructure as Code
 
-- Exercice 1 : Codage et déploiement de ressources simples (resource group, compte de stockage)
-- Exercice 2 : Codage et déploiement d'une Azure Container Registry avec stockage du TFState dans un Backend Azure Storage
-- Exercice 3 :  Déploiement d'un cluster AKS et explication du code associé
+- Lab 1 : Codage et déploiement de ressources simples (resource group, compte de stockage)
+- Lab 2 : Codage et déploiement d'une Azure Container Registry avec stockage du TFState dans un Backend Azure Storage
+- Lab 3 :  Déploiement d'un cluster AKS et explication du code associé
 
-- fin -
+# Pré requis
+
+Repo Github pour les étudiants : https://github.com/FrenchBarbusCorp/Workshop-Terraform-AKS 
+
+Avoir un environnement Bash 
+- Pour ceux sous Windows 10/11 : Installation WSL2 https://docs.microsoft.com/en-us/windows/wsl/install
+
+Avoir les outils suivants : 
+- Git
+- Azure CLI -> https://docs.microsoft.com/fr-fr/cli/azure/install-azure-cli-linux?pivots=apt (test: ~$  az Login)
+- terraform -> https://learn.hashicorp.com/tutorials/terraform/install-cli (test : ~$ terraform)
+- Visual Studio Code -> https://code.visualstudio.com
+- Extension Terraform pour VSCode -> Depuis le bash, executez « code . » et aller chercher l’extension « Hashicorp Terraform »
+
+
+# A faire en fin de journée
+
+Nettoyage des ressources en supprimant les resource group ou en exécutant **terraform destroy** dans les différents répertoires
 
