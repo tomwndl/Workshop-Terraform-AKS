@@ -10,17 +10,17 @@ Une fois les fichiers modifés, placez vous dans votre bash dans le répertoire 
 
 Cette commande va télécharger le provider azurerm (dans cet exercice)
 
-exécutez **ls -lisa**
+Exécuter **ls -lisa**
 
 un répertoire .terraform et un fichier .terraform.lock.hcl ont été créés dans le répertoire
 
-exécutez **terraform plan**
+Exécuter **terraform plan**
 
 Si tout se passe bien, cela doit afficher
 
 _Plan: 3 to add, 0 to change, 0 to destroy._ 
 
-exécutez **terraform apply** 
+Exécuter **terraform apply** 
 
 le message suivant va être affiché :
 
@@ -35,7 +35,7 @@ le message suivant va être affiché :
 
   Une fois le déploiement terminé. 
 
-  exécutez **ls -lisa** et vérifier la présence de 2 nouveaux fichiers : **terraform.tfstate** et **terraform.tfstate.backup**
+  Exécuter **ls -lisa** et vérifier la présence de 2 nouveaux fichiers : **terraform.tfstate** et **terraform.tfstate.backup**
 
-  exécutez **terraform show** pour voir le TFState
+  Exécuter **terraform show** pour voir le TFState
   

@@ -44,4 +44,4 @@ le message suivant va être affiché :
 
   Vérifier la présence du fichier **acr.terraform.tfstate** dans le container tfstate du compte de stockage Azure
 
-  exécuter **terraform show** pour voir le TFState
+  Exécuter **terraform show** pour voir le TFState
