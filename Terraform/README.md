@@ -26,6 +26,20 @@ Avoir les outils suivants :
 - Extension Terraform pour VSCode -> Depuis le bash, executez « code . » et aller chercher l’extension « Hashicorp Terraform »
 
 
+**Créer un Service Principal dans Azure**
+
+az login
+
+az account list -o table
+
+Récupérer l'ID de la subscription Azure puis exécuter la commande suivante :
+
+az ad sp create-for-rbac --name "votrenom-demo-githubaction2022" --role "Contributor" \
+                            --scopes /subscriptions/METTRE_ICI_L_ID_DE_LA_SUBSCRIPTION \
+                            --sdk-auth -o jsonc
+
+Récupérer le output de la commande et le sauvegarder temporairement dans un fichier 
+
 # A faire en fin de journée
 
 Nettoyage des ressources en supprimant les resource group ou en exécutant **terraform destroy** dans les différents répertoires
