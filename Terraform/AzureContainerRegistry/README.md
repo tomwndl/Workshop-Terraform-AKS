@@ -8,7 +8,7 @@ Utiliser les liens présents dans les fichiers pour aller dans la documentation 
 
 Important : dans le fichier 3-variables.tf  mettre un nom unique pour votre Azure Container Registry
 
-Une fois les fichiers modifés, placez vous dans votre bash dans le répertoire Terraform/AzureContainerRegistry et exécuter la commande **terraform init** 
+Une fois les fichiers modifiés, placez vous dans votre bash dans le répertoire Terraform/AzureContainerRegistry et exécuter la commande **terraform init** 
 
 Cette commande va télécharger le provider azurerm (dans cet exercice) mais aussi initaliser le backend pour le TFSTATE
 
@@ -47,3 +47,5 @@ le message suivant va être affiché :
   Vérifier la présence du fichier **acr.terraform.tfstate** dans le container tfstate du compte de stockage Azure
 
   Exécuter **terraform show** pour voir le TFState
+
+  Exécuter la commande **az acr list -o table**
