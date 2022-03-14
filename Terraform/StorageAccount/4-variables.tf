@@ -12,8 +12,8 @@ variable "resourceGroupName" {
   default = "RG-AKSCluster"
 }
 
-#  Resource Group Name
+#  Storage Account Name
 variable "storageAccountBackendTerraform" {
   type    = string
-  default = "backendterrastan"
+  default = "backendterrastan" # IMPORTANT mettre ici un nom unique. cf https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-storage
 }
