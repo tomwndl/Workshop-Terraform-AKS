@@ -1,4 +1,9 @@
 # Lab 1 : Resource Group et Storage Account
+
+Se connecter à son abonnement Azure avec Azure CLI: **az login**
+
+Vérifier que l'abonnement Azure est le bon **az account list**, la subscription de lab est marquée à True
+
 Aller dans le répertoire Terraform/StorageAccount
 
 Editer les 4 fichiers terraform (.tf) les uns après les autres en suivant la numérotation
