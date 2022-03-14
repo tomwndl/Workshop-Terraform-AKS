@@ -3,8 +3,13 @@
 Ceci est le repertoire avec le code Terraform pour les exercices d'Infrastructure as Code
 
 - Lab 1 : Codage et déploiement de ressources simples (resource group, compte de stockage)
+    --> **répertoire StorageAccount**
 - Lab 2 : Codage et déploiement d'une Azure Container Registry avec stockage du TFState dans un Backend Azure Storage
-- Lab 3 :  Déploiement d'un cluster AKS et explication du code associé
+    --> **répertoire AzureContainerRegistry**
+- Lab 3 : Déploiement d'un cluster AKS et explication du code associé
+    --> **répertoire ClusterAKS**
+- Lab 4 : GitHub Workflow pour déployer dans Azure avec terraform
+    --> **répertoire Pipeline-GH**
 
 # Pré requis
 
